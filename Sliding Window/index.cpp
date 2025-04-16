@@ -2,19 +2,23 @@
 
 using namespace std;
 
-int maxSumSubarray(int arr[],int n,int k){
-    int l=0,ans=0,maxi=0;
+int maxAvgSubarray(int arr[],int n,int k){
+    double maxi=0;
+    int sum=0;
+    double avg=0;
 
-    for(int r=0;r<n;r++){
-        ans+=arr[r];
-
-        if(r>=k-1){
-            maxi=max(ans,maxi);
-            ans-=arr[l];
-            
-            l++;
-        }
+    for(int i=0;i<k;i++){
+        sum+=arr[i];
         
+    }
+
+    maxi=sum/k;
+
+    for(int i=k;i<n;i++){
+        
+        sum+=arr[i]-arr[i-k];
+        avg=(double)sum/k;
+        maxi=max(maxi,avg);
         cout<<maxi<<endl;
     }
 
@@ -22,9 +26,9 @@ int maxSumSubarray(int arr[],int n,int k){
 }
 
 int main (){
-    int arr[] = {2, 1, 5, 1, 3, 2};
+    int arr[] = {2, 1, 3, 5, 9, 0,1};
     int k = 3;
     int n = sizeof(arr)/sizeof(arr[0]);
-    cout << "Maximum sum of subarray of size " << k << " is " << maxSumSubarray(arr, n, k) << endl;
+    cout << "Maximum sum of subarray of size " << k << " is " << maxAvgSubarray(arr, n, k) << endl;
     return 0;
 }
