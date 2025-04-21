@@ -28,7 +28,7 @@ int maxAvgSubarray(int arr[],int n,int k){
 int main (){
     int arr[] = {2, 1, 3, 5, 9, 0,1};
     int k = 3;
-    int n = sizeof(arr)/sizeof(arr[0]);
+    int n = sizeof(arr)/sizeof(arr[0]);;;
     cout << "Maximum sum of subarray of size " << k << " is " << maxAvgSubarray(arr, n, k) << endl;
     return 0;
 }
